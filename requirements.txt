@@ -1,6 +1,6 @@
-streamlit==1.18.1
-admet-ai==0.2.3
-pandas==1.5.3
+streamlit
+admet-ai
+pandas
 rdkit==2022.09.5
 requests==2.28.2
 py3Dmol==1.2.0
