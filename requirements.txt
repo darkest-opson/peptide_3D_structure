@@ -1,6 +1,6 @@
 streamlit
 admet-ai
 pandas
-rdkit==2022.09.5
-requests==2.28.2
-py3Dmol==1.2.0
+rdkit
+requests
+py3Dmol
