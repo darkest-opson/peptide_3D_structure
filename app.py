@@ -9,7 +9,7 @@ import streamlit as st
 import py3Dmol
 
 def show_pdb(pdb_string):
-    view = py3Dmol.view(width=600, height=400)
+    view = py3Dmol.view(width=700, height=400)
     view.addModel(pdb_string, 'pdb')
     view.setStyle({'cartoon': {'color': 'spectrum'}})
     view.setBackgroundColor('white')
