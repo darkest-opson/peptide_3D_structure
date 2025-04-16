@@ -1,6 +1,4 @@
 streamlit
-admet-ai
 pandas
-rdkit
 requests
 py3Dmol
