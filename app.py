@@ -1,8 +1,5 @@
 import streamlit as st
-from admet_ai import ADMETModel
 import pandas as pd
-from rdkit import Chem
-from rdkit.Chem import Descriptors, MolFromSmiles
 import requests
 import py3Dmol
 import io
@@ -21,50 +18,10 @@ def show_pdb(pdb_string):
 
 
 st.set_page_config(page_title="Peptide Tools", layout="wide")
-st.title("🧬 Peptide Analysis Suite")
+st.title("🧬 3D structure prediction and visualisation")
 
-st.markdown("Use the tools below to analyze peptide sequences for ADMET properties, molecular descriptors, and predicted 3D structure.")
+st.markdown("Use the tools below to analyze peptide sequences for predicted 3D structure.")
 
-# Tool 1: ADMET Prediction
-st.header("🔍 ADMET Prediction")
-admet_input = st.text_input("Enter peptide sequence for ADMET prediction:", key="admet_input")
-
-if admet_input:
-    try:
-        smiles_string = Chem.MolToSmiles(Chem.MolFromSequence(admet_input))
-        model = ADMETModel()
-        preds = model.predict(smiles=smiles_string)
-        admet_df = pd.DataFrame(preds, index=[0])
-        st.dataframe(admet_df)
-    except Exception as e:
-        st.error(f"Error in ADMET prediction: {e}")
-
-# Tool 1: ADMET Prediction
-st.header("🔍 SMILES Structure")
-SMILES = st.text_input("Enter peptide sequence for SMILES Structure:", key="SMILES_INPUT")
-if SMILES:
-    try:
-        smiles_string = Chem.MolToSmiles(Chem.MolFromSequence(admet_input))
-        st.text(f"{smiles_string}")
-    
-    except Exception as e:
-        st.error(f"Error in ADMET prediction: {e}")
-
-# Tool 2: Molecular Descriptor Calculation
-st.header("🔬 Molecular Descriptor Calculation")
-desc_input = st.text_input("Enter peptide sequence for molecular descriptors:", key="desc_input")
-
-if desc_input:
-    try:
-        smiles_string = Chem.MolToSmiles(Chem.MolFromSequence(desc_input))
-        mol = MolFromSmiles(smiles_string)
-        descrs = Descriptors._descList
-        desc_values = {desc_name: descriptor(mol) for desc_name, descriptor in descrs}
-        desc_df = pd.DataFrame(desc_values, index=[0])
-        st.dataframe(desc_df)
-    except Exception as e:
-        st.error(f"Error in calculating descriptors: {e}")
-# Tool 3: 3D Protein Structure Visualization
 st.header("🧫 3D Visualisation")
 try:
         # Example usage with a PDB file
